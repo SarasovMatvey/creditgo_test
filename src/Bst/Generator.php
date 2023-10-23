@@ -31,6 +31,13 @@ class Generator {
         $indexingRows = [];
 
         foreach ($this->dataProvider->provideData() as $row) {
+            if (! in_array(
+                gettype($row->getFieldValue($this->fieldToIndex)),
+                ['integer', 'string', 'double']
+            )) {
+                continue;
+            }
+
             if ($row->hasField($this->fieldToIndex)) {
                 $indexingRows []= $row;
             }
