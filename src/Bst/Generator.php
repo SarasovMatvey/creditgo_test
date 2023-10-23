@@ -64,9 +64,6 @@ class Generator {
         return $duplicatedValues;
     }
 
-    /**
-     * @return mixed[]
-     */
     protected function rowsToValues(): array {
         return array_map(function($row) {
             return $row->getFieldValue($this->fieldToIndex);
@@ -80,7 +77,7 @@ class Generator {
         return array_map(function ($row) {
             return new Node(
                 value: $row->getFieldValue($this->fieldToIndex),
-                index: $row->getId(),
+                indexes: [$row->getId()],
                 left: null,
                 right: null,
             );
@@ -112,7 +109,7 @@ class Generator {
         foreach ($duplicatesHistory as $value => $indexes) {
             $this->unbindingNodes []= new Node(
                 value: $value,
-                index: $indexes,
+                indexes: $indexes,
                 left: null,
                 right: null,
             );

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\JsonDataProvider;
+namespace App\Bst\DataProviders;
 
 use App\Bst\DataProvider;
 use App\Bst\Row;
+use App\Helpers\ObjectHierarchySelector;
 
 class JsonFileDataProvider implements DataProvider
 {
@@ -14,15 +15,15 @@ class JsonFileDataProvider implements DataProvider
     }
 
     /**
-     * @return Row[]
+     * @return \App\Bst\DataProviders\Row[]
      */
-    function provideData(): array
+    public function provideData(): array
     {
         $documents = json_decode(file_get_contents($this->inputFilePath), true);
 
         $data = [];
         foreach ($documents as $i => $document) {
-            $data []= new \App\JsonDataProvider\Row($i, $document);
+            $data []= new \App\Bst\DataProviders\Row($i, $document, new ObjectHierarchySelector());
         }
 
         return $data;

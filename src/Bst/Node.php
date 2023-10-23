@@ -5,7 +5,7 @@ namespace App\Bst;
 class Node {
     public function __construct(
         protected mixed $value,
-        protected int|array $index,
+        protected array $indexes,
         protected ?Node $left,
         protected ?Node $right,
     )
@@ -16,7 +16,7 @@ class Node {
     {
         return [
             'value' => $this->value,
-            'index' => $this->index,
+            'indexes' => $this->indexes,
             'left' => $this->left?->toArray(),
             'right' => $this->right?->toArray(),
         ];
@@ -32,14 +32,20 @@ class Node {
         $this->value = $value;
     }
 
-    public function getIndex(): int|array
+    /**
+     * @return int[]
+     */
+    public function getIndexes(): array
     {
-        return $this->index;
+        return $this->indexes;
     }
 
-    public function setIndex(int|array $index): void
+    /**
+     * @param int[] $indexes
+     */
+    public function setIndexes(array $indexes): void
     {
-        $this->index = $index;
+        $this->indexes = $indexes;
     }
 
     public function getLeft(): ?Node
