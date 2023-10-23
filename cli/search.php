@@ -1,29 +1,17 @@
 <?php
 
+use App\Searcher\Searcher;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
 $searchField = $argv[1];
 $searchValue = "Adhi Kot";
 
 $documents = json_decode(file_get_contents('input.json'), true);
-$bst = json_decode(file_get_contents('bst.json'), true);
+$bst = json_decode(file_get_contents('gen/bst.json'), true);
 
+$searcher = new Searcher($bst);
 if ($searchField === $bst['field']) {
-    var_dump(search($searchValue, $bst['bst']));
+    var_dump($searcher->search($searchValue));
 }
 
-function search($searchValue, $root) {
-    if ($searchValue === $root['value']) {
-        return $root['initialIndex'];
-    } elseif ($searchValue > $root['value']) {
-        if (is_null($root['right'])) {
-            return null;
-        }
-
-        return search($searchValue, $root['right']);
-    } elseif ($searchValue < $root['value']) {
-        if (is_null($root['left'])) {
-            return null;
-        }
-
-        return search($searchValue, $root['left']);
-    }
-}
