@@ -20,7 +20,7 @@ class Generator {
     {
     }
 
-    public function generate(): Node {
+    public function generate(): ?Node {
         $this->collectIndexingRows();
         $this->prepareUnbindingNodes();
 

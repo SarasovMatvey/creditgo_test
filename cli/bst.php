@@ -10,5 +10,5 @@ $generator = new Generator(new JsonFileDataProvider('input.json'), $indexField);
 
 file_put_contents('gen/bst.json', json_encode([
     'field' => $indexField,
-    'bst' => $generator->generate()->toArray(),
+    'bst' => $generator->generate()?->toArray(),
 ]));
