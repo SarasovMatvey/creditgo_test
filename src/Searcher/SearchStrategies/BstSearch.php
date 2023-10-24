@@ -27,6 +27,8 @@ class BstSearch implements SearchStrategy
         mixed $searchValue,
         array $root
     ): ?array {
+        $this->onIterationStart();
+
         if ($searchValue === $root['value']) {
             return $root['indexes'];
         } elseif ($searchValue > $root['value']) {
@@ -44,5 +46,9 @@ class BstSearch implements SearchStrategy
         }
 
         return null;
+    }
+
+    function onIterationStart()
+    {
     }
 }

@@ -100,7 +100,7 @@ class Generator {
                     $duplicatesHistory[$node->getValue()] = [];
                 }
 
-                $duplicatesHistory[$node->getValue()] []= $node->getIndex();
+                $duplicatesHistory[$node->getValue()] []= $node->getIndexes();
 
                 unset($this->unbindingNodes[$i]);
             }

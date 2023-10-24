@@ -23,6 +23,8 @@ class SimpleSearch implements SearchStrategy
         $indexes = [];
 
         foreach ($this->documents as $i => $document) {
+            $this->onIterationStart();
+
             $searchFieldValue = $this->objectHierarchySelector->select($document, $this->searchField);
 
             if ($searchFieldValue === $searchValue) {
@@ -31,5 +33,9 @@ class SimpleSearch implements SearchStrategy
         }
 
         return $indexes;
+    }
+
+    function onIterationStart()
+    {
     }
 }
