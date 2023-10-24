@@ -1,0 +1,14 @@
+version: "3"
+services:
+  bst:
+    image: php:8.2-cli
+    working_dir: /home
+    volumes:
+      - ./:/home/
+    entrypoint: php cli/bst.php
+  search:
+    image: php:8.2-cli
+    working_dir: /home
+    volumes:
+      - ./:/home/
+    entrypoint: php cli/search.php

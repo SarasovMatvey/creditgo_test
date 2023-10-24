@@ -5,6 +5,7 @@ use App\Bst\Generator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+var_dump(123);
 $cliArguments = getopt("", [
     'indexField:',
 ]);
