@@ -16,7 +16,7 @@ class Formatter
         $nextColor = self::COLOR_LIGHT_GREEN;
         foreach ($documents as $document) {
             $documentAsString = var_export($document, true);
-            $documentsAsString .= "\n${currentColor}${documentAsString}{$K(self::COLOR_OFF)}\n";
+            $documentsAsString .= "\n{$currentColor}{$documentAsString}{$K(self::COLOR_OFF)}\n";
             list($currentColor, $nextColor) = [$nextColor, $currentColor];
         }
 
@@ -25,8 +25,8 @@ class Formatter
 
 ----------------------
 Documents: 
-${documentsAsString}
-IterationsCount: {$K(self::COLOR_GREEN)}${iterationsCount}{$K(self::COLOR_OFF)}
+{$documentsAsString}
+IterationsCount: {$K(self::COLOR_GREEN)}{$iterationsCount}{$K(self::COLOR_OFF)}
 ----------------------
 
 EOF;

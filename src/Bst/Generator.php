@@ -122,7 +122,7 @@ class Generator {
             /** @var Node $a */
             /** @var Node $b */
 
-            return $a->getValue() > $b->getValue();
+            return $a->getValue() <=> $b->getValue();
         });
     }
 
