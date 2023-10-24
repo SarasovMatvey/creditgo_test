@@ -1,5 +1,6 @@
 <?php
 
+use App\Cli\Formatter;
 use App\Helpers\ObjectHierarchySelector;
 use App\Searcher\Searcher;
 use App\Searcher\SearchStrategies\LogBstSearch;
@@ -18,19 +19,22 @@ $searchValue = $cliArguments['searchValue'];
 $useBst = !($cliArguments['useBst'] === 'false');
 
 $documents = json_decode(file_get_contents('input.json'), true);
-$bst = json_decode(file_get_contents('gen/bst.json'), true);
+
+$bstFilePath = 'gen/bst.json';
+$bst = null;
+if (file_exists($bstFilePath)) {
+    $bstFileContent = file_get_contents($bstFilePath);
+    if ($bstFileContent) {
+        $bst = json_decode($bstFileContent, true);
+    }
+}
 
 $iterationsCounter = 0;
-if ($searchField === $bst['field'] && $useBst) {
+$resultDocuments = [];
+$searcher = null;
+
+if ($bst && $searchField === $bst['field'] && $useBst) {
     $searcher = new Searcher(new LogBstSearch($bst['bst'], $iterationsCounter));
-    $indexes = $searcher->search($searchValue);
-    $resultDocuments = array_reduce($indexes, function (array $resultDocuments, array $indexes) use ($documents) {
-        foreach ($indexes as $index) {
-            $resultDocuments []= $documents[$index];
-        }
-        return $resultDocuments;
-    }, []);
-    var_dump($resultDocuments, $iterationsCounter);
 } else {
     $searcher = new Searcher(new LogSimpleSearch(
         $searchField,
@@ -38,13 +42,14 @@ if ($searchField === $bst['field'] && $useBst) {
         new ObjectHierarchySelector(),
         $iterationsCounter
     ));
-    $indexes = $searcher->search($searchValue);
-    $resultDocuments = array_reduce($indexes, function (array $resultDocuments, array $indexes) use ($documents) {
-        foreach ($indexes as $index) {
-            $resultDocuments []= $documents[$index];
-        }
-        return $resultDocuments;
-    }, []);
-    var_dump($resultDocuments, $iterationsCounter);
 }
+
+$indexes = $searcher->search($searchValue);
+foreach ($indexes as $index) {
+    $resultDocuments []= $documents[$index];
+}
+
+$formatter = new Formatter();
+$formattedOutput = $formatter->format($iterationsCounter, $resultDocuments);
+echo $formattedOutput;
 
