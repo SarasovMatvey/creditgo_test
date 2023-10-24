@@ -27,3 +27,9 @@ docker-compose run bst --indexField="name"
 ``` bash
 docker-compose run search --searchField="name" --searchValue="Adhi Kot"
 ```
+
+6. Run search without binary tree index:
+
+``` bash
+docker-compose run search --searchField="name" --searchValue="Adhi Kot" --useBst="false"
+```
