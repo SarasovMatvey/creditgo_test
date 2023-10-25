@@ -7,7 +7,7 @@ interface SearchStrategy
     /**
      * @return ?int[]
      */
-    function search(string $searchValue): ?array;
+    public function search(string $searchValue): ?array;
 
-    function onIterationStart();
+    public function onIterationStart();
 }

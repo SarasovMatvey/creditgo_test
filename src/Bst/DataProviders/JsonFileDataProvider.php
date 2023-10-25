@@ -10,8 +10,7 @@ class JsonFileDataProvider implements DataProvider
 {
     public function __construct(
         protected string $inputFilePath
-    )
-    {
+    ) {
     }
 
     /**
@@ -23,7 +22,7 @@ class JsonFileDataProvider implements DataProvider
 
         $data = [];
         foreach ($documents as $i => $document) {
-            $data []= new \App\Bst\DataProviders\Row($i, $document, new ObjectHierarchySelector());
+            $data [] = new \App\Bst\DataProviders\Row($i, $document, new ObjectHierarchySelector());
         }
 
         return $data;

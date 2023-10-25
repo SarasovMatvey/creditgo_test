@@ -2,9 +2,10 @@
 
 namespace App\Bst;
 
-interface DataProvider {
+interface DataProvider
+{
     /**
      * @return Row[]
      */
-    function provideData(): array;
+    public function provideData(): array;
 }

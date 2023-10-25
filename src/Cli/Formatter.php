@@ -8,7 +8,8 @@ class Formatter
     protected const COLOR_LIGHT_GREEN = "\033[36m";
     protected const COLOR_OFF = "\033[0m";
 
-    public function format(int $iterationsCount, array $documents): string {
+    public function format(int $iterationsCount, array $documents): string
+    {
         $K = 'strval'; // need to use const interpolation
 
         $documentsAsString = '';

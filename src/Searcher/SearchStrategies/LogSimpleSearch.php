@@ -11,8 +11,7 @@ class LogSimpleSearch extends SimpleSearch
         protected array $documents,
         protected ObjectHierarchySelector $objectHierarchySelector,
         protected int &$iterationsCounter
-    )
-    {
+    ) {
         parent::__construct($searchField, $documents, $objectHierarchySelector);
     }
 

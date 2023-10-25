@@ -10,8 +10,7 @@ class Row implements \App\Bst\Row
         protected int $id,
         protected array $document,
         protected ObjectHierarchySelector $objectHierarchySelector,
-    )
-    {
+    ) {
     }
 
     public function getId(): int

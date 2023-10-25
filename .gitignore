@@ -1,2 +1,4 @@
 /vendor/
 gen/bst.json
+.php-cs-fixer.cache
+.idea

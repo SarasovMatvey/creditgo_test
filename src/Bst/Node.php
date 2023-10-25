@@ -2,14 +2,14 @@
 
 namespace App\Bst;
 
-class Node {
+class Node
+{
     public function __construct(
         protected mixed $value,
         protected array $indexes,
         protected ?Node $left,
         protected ?Node $right,
-    )
-    {
+    ) {
     }
 
     public function toArray(): array

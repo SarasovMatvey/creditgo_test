@@ -2,7 +2,8 @@
 
 namespace App\Bst;
 
-class Generator {
+class Generator
+{
     /**
      * @var Row[]
      */
@@ -16,18 +17,19 @@ class Generator {
     public function __construct(
         protected DataProvider $dataProvider,
         protected string $fieldToIndex,
-    )
-    {
+    ) {
     }
 
-    public function generate(): ?Node {
+    public function generate(): ?Node
+    {
         $this->collectIndexingRows();
         $this->prepareUnbindingNodes();
 
         return $this->generateBstRecursive(0, count($this->unbindingNodes) - 1);
     }
 
-    protected function collectIndexingRows() {
+    protected function collectIndexingRows()
+    {
         $indexingRows = [];
 
         foreach ($this->dataProvider->provideData() as $row) {
@@ -39,7 +41,7 @@ class Generator {
             }
 
             if ($row->hasField($this->fieldToIndex)) {
-                $indexingRows []= $row;
+                $indexingRows [] = $row;
             }
         }
 
@@ -49,12 +51,15 @@ class Generator {
     /**
      * @return Row[]
      */
-    protected function findDuplicatedFieldValues(): array {
+    protected function findDuplicatedFieldValues(): array
+    {
         $rowsValues = $this->rowsToValues();
         $duplicatedValues = [];
 
         foreach(array_count_values($rowsValues) as $value => $count) {
-            if (is_null($value)) continue;
+            if (is_null($value)) {
+                continue;
+            }
 
             if($count > 1) {
                 $duplicatedValues[] = $value;
@@ -64,8 +69,9 @@ class Generator {
         return $duplicatedValues;
     }
 
-    protected function rowsToValues(): array {
-        return array_map(function($row) {
+    protected function rowsToValues(): array
+    {
+        return array_map(function ($row) {
             return $row->getFieldValue($this->fieldToIndex);
         }, $this->indexingRows);
     }
@@ -73,7 +79,8 @@ class Generator {
     /**
      * @return Node[]
      */
-    protected function rowsToNodes(): array {
+    protected function rowsToNodes(): array
+    {
         return array_map(function ($row) {
             return new Node(
                 value: $row->getFieldValue($this->fieldToIndex),
@@ -84,14 +91,16 @@ class Generator {
         }, $this->indexingRows);
     }
 
-    protected function prepareUnbindingNodes() {
+    protected function prepareUnbindingNodes()
+    {
         $this->unbindingNodes = $this->rowsToNodes();
 
         $this->mergeDuplicatedNodes();
         $this->sortUnbindingNodes();
     }
 
-    protected function mergeDuplicatedNodes() {
+    protected function mergeDuplicatedNodes()
+    {
         $duplicatesHistory = [];
 
         foreach ($this->unbindingNodes as $i => $node) {
@@ -108,7 +117,7 @@ class Generator {
         }
 
         foreach ($duplicatesHistory as $value => $indexes) {
-            $this->unbindingNodes []= new Node(
+            $this->unbindingNodes [] = new Node(
                 value: $value,
                 indexes: $indexes,
                 left: null,
@@ -117,8 +126,9 @@ class Generator {
         }
     }
 
-    protected function sortUnbindingNodes() {
-        usort($this->unbindingNodes, function($a, $b) {
+    protected function sortUnbindingNodes()
+    {
+        usort($this->unbindingNodes, function ($a, $b) {
             /** @var Node $a */
             /** @var Node $b */
 
@@ -126,7 +136,8 @@ class Generator {
         });
     }
 
-    protected function generateBstRecursive($start, $end): ?Node {
+    protected function generateBstRecursive($start, $end): ?Node
+    {
         if ($end < $start) {
             return null;
         }

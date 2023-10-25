@@ -8,8 +8,7 @@ class BstSearch implements SearchStrategy
 {
     public function __construct(
         protected array $bst,
-    )
-    {
+    ) {
     }
 
     /**
@@ -48,7 +47,7 @@ class BstSearch implements SearchStrategy
         return null;
     }
 
-    function onIterationStart()
+    public function onIterationStart()
     {
     }
 }

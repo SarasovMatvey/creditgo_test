@@ -11,14 +11,13 @@ class SimpleSearch implements SearchStrategy
         protected string $searchField,
         protected array $documents,
         protected ObjectHierarchySelector $objectHierarchySelector,
-    )
-    {
+    ) {
     }
 
     /**
      * @return int[]|null
      */
-    function search(string $searchValue): ?array
+    public function search(string $searchValue): ?array
     {
         $indexes = [];
 
@@ -28,14 +27,14 @@ class SimpleSearch implements SearchStrategy
             $searchFieldValue = $this->objectHierarchySelector->select($document, $this->searchField);
 
             if ($searchFieldValue === $searchValue) {
-                $indexes []= $i;
+                $indexes [] = $i;
             }
         }
 
         return $indexes;
     }
 
-    function onIterationStart()
+    public function onIterationStart()
     {
     }
 }

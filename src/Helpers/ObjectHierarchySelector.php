@@ -4,7 +4,8 @@ namespace App\Helpers;
 
 class ObjectHierarchySelector
 {
-    public function select(array $data, string $query): mixed {
+    public function select(array $data, string $query): mixed
+    {
         if (!static::has($data, $query)) {
             return null;
         }
@@ -27,7 +28,8 @@ class ObjectHierarchySelector
         return $data[$query];
     }
 
-    public function has(array $data, string $query): bool {
+    public function has(array $data, string $query): bool
+    {
         if (str_contains($query, '.')) {
             $hierarchy = explode('.', $query);
 

@@ -2,8 +2,9 @@
 
 namespace App\Bst;
 
-interface Row {
-    function getId(): int;
-    function getFieldValue(string $field): mixed;
-    function hasField(string $field): bool;
+interface Row
+{
+    public function getId(): int;
+    public function getFieldValue(string $field): mixed;
+    public function hasField(string $field): bool;
 }
