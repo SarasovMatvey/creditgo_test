@@ -33,3 +33,10 @@ docker-compose run search --searchField="name" --searchValue="Adhi Kot"
 ``` bash
 docker-compose run search --searchField="name" --searchValue="Adhi Kot" --useBst="false"
 ```
+
+More:
+
+- Run tests:
+``` bash
+vendor/bin/phpunit tests
+```
