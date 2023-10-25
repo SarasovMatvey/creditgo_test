@@ -1,6 +1,6 @@
 <?php
 
-namespace Bst;
+namespace unit\Bst;
 
 use App\Bst\DataProvider;
 use App\Bst\Generator;

@@ -12,3 +12,7 @@ services:
     volumes:
       - ./:/home/
     entrypoint: php cli/search.php
+  functional-tests:
+    build:
+      context: .
+      dockerfile: docker/functional-tests/Dockerfile

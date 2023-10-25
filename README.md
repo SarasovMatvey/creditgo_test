@@ -36,7 +36,17 @@ docker-compose run search --searchField="name" --searchValue="Adhi Kot" --useBst
 
 More:
 
-- Run tests:
+- Run unit tests:
 ``` bash
-vendor/bin/phpunit tests
+vendor/bin/phpunit tests/unit
+```
+
+- Run integration tests:
+``` bash
+vendor/bin/phpunit tests/unit
+```
+
+- Run functional tests:
+``` bash
+docker-compose run functional-tests
 ```

@@ -1,0 +1,69 @@
+
+----------------------
+Documents: 
+
+[32marray (
+  'name' => 'Acapulco',
+  'id' => '10',
+  'nametype' => 'Valid',
+  'recclass' => 'Acapulcoite',
+  'mass' => '1914',
+  'fall' => 'Fell',
+  'year' => '1976-01-01T00:00:00.000',
+  'reclat' => '16.883330',
+  'reclong' => '-99.900000',
+  'geolocation' => 
+  array (
+    'type' => 'Point',
+    'coordinates' => 
+    array (
+      0 => -99.9,
+      1 => 16.88333,
+    ),
+  ),
+)[0m
+
+[36marray (
+  'name' => 'Achiras',
+  'id' => '370',
+  'nametype' => 'Valid',
+  'recclass' => 'L6',
+  'mass' => '780',
+  'fall' => 'Fell',
+  'year' => '1902-01-01T00:00:00.000',
+  'reclat' => '-33.166670',
+  'reclong' => '-64.950000',
+  'geolocation' => 
+  array (
+    'type' => 'Point',
+    'coordinates' => 
+    array (
+      0 => -64.95,
+      1 => -33.16667,
+    ),
+  ),
+)[0m
+
+[32marray (
+  'name' => 'Adhi Kot',
+  'id' => '379',
+  'nametype' => 'Valid',
+  'recclass' => 'EH4',
+  'mass' => '4239',
+  'fall' => 'Fell',
+  'year' => '1919-01-01T00:00:00.000',
+  'reclat' => '32.100000',
+  'reclong' => '71.800000',
+  'geolocation' => 
+  array (
+    'type' => 'Point',
+    'coordinates' => 
+    array (
+      0 => 71.8,
+      1 => 32.1,
+    ),
+  ),
+)[0m
+
+IterationsCount: [32m3[0m
+----------------------
