@@ -50,3 +50,8 @@ vendor/bin/phpunit tests/unit
 ``` bash
 docker-compose run functional-tests
 ```
+
+-- Code style fix:
+``` bash
+composer cs
+```
